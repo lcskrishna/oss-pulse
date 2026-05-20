@@ -1,6 +1,7 @@
 # oss-pulse
 
-> Weekly digest of changes across tracked OSS repositories.
+> Weekly digest of changes across tracked ROCm OSS repositories.
+> View the live site: **[lcskrishna.github.io/oss-pulse](https://lcskrishna.github.io/oss-pulse)**
 
 ---
 
@@ -16,22 +17,16 @@
 ## How to Add a Repository
 
 1. Add an entry to `TRACKED` in `scripts/update_dashboard.py`
-2. Add a run step for it in `.github/workflows/weekly-tracker.yml`
-3. Push — the next Monday run will pick it up automatically
+2. Add a run step in `.github/workflows/weekly-tracker.yml`
+3. Push — the next Monday run picks it up automatically
 
 ## Run Manually
 
 ```bash
-# Track the last 7 days (default)
 python scripts/track_repo_changes.py --repo ROCm/aiter
-
-# Custom date range
-python scripts/track_repo_changes.py --repo ROCm/aiter --since 2026-05-01 --until 2026-05-20
-
-# Faster run (skip per-commit file fetching)
-python scripts/track_repo_changes.py --repo ROCm/aiter --no-files
+python scripts/track_repo_changes.py --repo ROCm/mori
+python scripts/update_dashboard.py
 ```
 
 ---
-
-_Dashboard last updated: 2026-05-20 02:20 UTC_
+_Last updated: 2026-05-20 02:29 UTC_

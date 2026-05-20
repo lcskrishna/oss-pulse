@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Regenerate the root README.md dashboard from all per-repo index files.
-Run automatically after track_repo_changes.py in CI, or manually.
+Regenerate README.md (GitHub repo homepage) and index.md (GitHub Pages homepage)
+from all per-repo report files. Run automatically in CI after track_repo_changes.py.
 """
 
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -28,30 +29,77 @@ TRACKED = [
 ]
 
 
-def latest_report_link(slug: str) -> tuple[str, str]:
-    """Return (period_str, relative_md_path) of the most recent report, or ('—', '')."""
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def latest_report(slug: str) -> tuple[str, Path | None]:
+    """Return (period_str, Path) of the most recent report file, or ('—', None)."""
     report_dir = REPO_ROOT / "reports" / slug
     if not report_dir.exists():
-        return "—", ""
-    reports = sorted(report_dir.glob(f"{slug}_*.md"), reverse=True)
-    # Exclude index README
-    reports = [r for r in reports if r.name != "README.md"]
+        return "—", None
+    reports = sorted(
+        [r for r in report_dir.glob(f"{slug}_*.md") if r.name != "README.md"],
+        reverse=True,
+    )
     if not reports:
-        return "—", ""
+        return "—", None
     latest = reports[0]
-    # Extract period from filename: SLUG_YYYY-MM-DD_to_YYYY-MM-DD.md
-    parts = latest.stem.replace(f"{slug}_", "")   # YYYY-MM-DD_to_YYYY-MM-DD
-    period = parts.replace("_to_", " → ")
-    rel = f"reports/{slug}/{latest.name}"
-    return period, rel
+    period = latest.stem.replace(f"{slug}_", "").replace("_to_", " → ")
+    return period, latest
 
 
-def build_dashboard() -> str:
+def extract_component_table(report_path: Path) -> list[tuple[str, int]]:
+    """Parse the Summary by Component table from a report markdown file."""
+    if report_path is None:
+        return []
+    text = report_path.read_text(encoding="utf-8")
+    # Find the summary table block
+    in_table = False
+    rows = []
+    for line in text.splitlines():
+        if "## Summary by Component" in line:
+            in_table = True
+            continue
+        if in_table:
+            if line.startswith("| Component"):
+                continue
+            if line.startswith("|---"):
+                continue
+            if line.startswith("| ") and " | " in line:
+                parts = [p.strip() for p in line.strip().strip("|").split("|")]
+                if len(parts) == 2:
+                    try:
+                        rows.append((parts[0], int(parts[1])))
+                    except ValueError:
+                        pass
+            elif line.startswith("##") and rows:
+                break   # hit the next section
+    return rows
+
+
+def extract_commit_count(report_path: Path) -> int:
+    """Read total commit count from report header line."""
+    if report_path is None:
+        return 0
+    for line in report_path.read_text(encoding="utf-8").splitlines():
+        m = re.search(r"Total commits:\*\*\s*(\d+)", line)
+        if m:
+            return int(m.group(1))
+    return 0
+
+
+# ---------------------------------------------------------------------------
+# Build README.md  (plain, shown on GitHub repo homepage)
+# ---------------------------------------------------------------------------
+
+def build_readme() -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     lines = [
         "# oss-pulse",
         "",
-        "> Weekly digest of changes across tracked OSS repositories.",
+        "> Weekly digest of changes across tracked ROCm OSS repositories.",
+        "> View the live site: **[lcskrishna.github.io/oss-pulse](https://lcskrishna.github.io/oss-pulse)**",
         "",
         "---",
         "",
@@ -60,15 +108,14 @@ def build_dashboard() -> str:
         "| Repository | Description | Last Report | Commit Activity |",
         "|------------|-------------|:-----------:|:---------------:|",
     ]
-
     for t in TRACKED:
-        period, rel = latest_report_link(t["slug"])
+        period, path = latest_report(t["slug"])
+        rel = f"reports/{t['slug']}/{path.name}" if path else ""
         report_cell = f"[{period}]({rel})" if rel else "—"
         badge = f"![last-commit]({t['badge']}?style=flat-square)"
         lines.append(
             f"| [{t['repo']}]({t['link']}) | {t['desc']} | {report_cell} | {badge} |"
         )
-
     lines += [
         "",
         "---",
@@ -76,31 +123,101 @@ def build_dashboard() -> str:
         "## How to Add a Repository",
         "",
         "1. Add an entry to `TRACKED` in `scripts/update_dashboard.py`",
-        "2. Add a run step for it in `.github/workflows/weekly-tracker.yml`",
-        "3. Push — the next Monday run will pick it up automatically",
+        "2. Add a run step in `.github/workflows/weekly-tracker.yml`",
+        "3. Push — the next Monday run picks it up automatically",
         "",
         "## Run Manually",
         "",
         "```bash",
-        "# Track the last 7 days (default)",
         "python scripts/track_repo_changes.py --repo ROCm/aiter",
-        "",
-        "# Custom date range",
-        "python scripts/track_repo_changes.py --repo ROCm/aiter --since 2026-05-01 --until 2026-05-20",
-        "",
-        "# Faster run (skip per-commit file fetching)",
-        "python scripts/track_repo_changes.py --repo ROCm/aiter --no-files",
+        "python scripts/track_repo_changes.py --repo ROCm/mori",
+        "python scripts/update_dashboard.py",
         "```",
         "",
         "---",
+        f"_Last updated: {now}_",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+# ---------------------------------------------------------------------------
+# Build index.md  (rendered by Jekyll → GitHub Pages single-page dashboard)
+# ---------------------------------------------------------------------------
+
+def build_index() -> str:
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    lines = [
+        "---",
+        "layout: default",
+        f'title: "oss-pulse — Weekly OSS Digest"',
+        "---",
         "",
-        f"_Dashboard last updated: {now}_",
+        "# oss-pulse",
+        "",
+        "> Weekly digest of changes across tracked ROCm OSS repositories.",
+        "",
+        f"_Last updated: **{now}**_",
+        "",
+        "---",
+        "",
+    ]
+
+    for t in TRACKED:
+        period, path = latest_report(t["slug"])
+        total = extract_commit_count(path)
+        components = extract_component_table(path)
+
+        rel_report = f"reports/{t['slug']}/{path.name}" if path else ""
+        rel_index  = f"reports/{t['slug']}/"
+
+        lines += [
+            f"## [{t['repo']}]({t['link']})",
+            "",
+            f"{t['desc']}",
+            "",
+            f"![last-commit]({t['badge']}?style=flat-square)",
+            "",
+        ]
+
+        if period != "—" and total:
+            lines += [
+                f"**Latest report:** [{period}]({rel_report}) — "
+                f"**{total} commits** &nbsp;·&nbsp; [all reports]({rel_index})",
+                "",
+            ]
+
+        if components:
+            lines += [
+                "| Component | Commits |",
+                "|-----------|:-------:|",
+            ]
+            for comp, count in components:
+                lines.append(f"| {comp} | {count} |")
+            lines.append("")
+
+        lines += ["---", ""]
+
+    lines += [
+        "## How to Add a Repository",
+        "",
+        "1. Add an entry to `TRACKED` in `scripts/update_dashboard.py`",
+        "2. Add a run step in `.github/workflows/weekly-tracker.yml`",
+        "3. Push — GitHub Actions picks it up every Monday",
+        "",
     ]
 
     return "\n".join(lines) + "\n"
 
 
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
 if __name__ == "__main__":
     readme = REPO_ROOT / "README.md"
-    readme.write_text(build_dashboard(), encoding="utf-8")
-    print(f"Dashboard written → {readme}")
+    readme.write_text(build_readme(), encoding="utf-8")
+    print(f"README    → {readme}")
+
+    index = REPO_ROOT / "index.md"
+    index.write_text(build_index(), encoding="utf-8")
+    print(f"index.md  → {index}")

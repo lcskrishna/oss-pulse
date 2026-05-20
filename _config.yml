@@ -1,0 +1,10 @@
+title: oss-pulse
+description: Weekly digest of changes across tracked ROCm OSS repositories
+theme: jekyll-theme-cayman
+
+# Make all markdown files in reports/ navigable
+include:
+  - reports
+
+# GitHub Pages settings
+show_downloads: false
