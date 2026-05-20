@@ -72,6 +72,9 @@ jobs:
             --repo NVIDIA/TensorRT \
             --format both
 
+      - name: Prune old reports (keep latest 10 per repo)
+        run: python scripts/cleanup_reports.py
+
       - name: Update root dashboard
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
