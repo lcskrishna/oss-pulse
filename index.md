@@ -7,7 +7,7 @@ title: "oss-pulse — Weekly OSS Digest"
 
 > Weekly digest of changes across tracked ROCm OSS repositories.
 
-_Last updated: **2026-05-20 04:15 UTC**_
+_Last updated: **2026-05-20 04:16 UTC**_
 
 ---
 
@@ -17,20 +17,22 @@ AI Tensor Engine for ROCm — optimized GPU kernels (MoE, MLA, GEMM, Attention)
 
 ![last-commit](https://img.shields.io/github/last-commit/ROCm/aiter?style=flat-square)
 
-**Latest report:** [2026-05-13 → 2026-05-20](reports/ROCm_aiter/ROCm_aiter_2026-05-13_to_2026-05-20.md) — **58 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_aiter/)
+**Latest report:** [2026-05-13 → 2026-05-20](reports/ROCm_aiter/ROCm_aiter_2026-05-13_to_2026-05-20.md) — **59 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_aiter/)
 
 | Component | Commits |
 |-----------|:-------:|
-| Other | 18 |
-| Triton Kernels | 8 |
-| GEMM | 7 |
-| MoE | 7 |
+| MoE | 11 |
+| GEMM | 9 |
+| Other | 9 |
 | Quantization | 6 |
-| CI / Build | 5 |
-| MLA | 2 |
-| MHA / Attention | 2 |
+| Triton Kernels | 6 |
+| MLA | 5 |
+| MHA / Attention | 4 |
+| CI / Build | 4 |
 | OPUS / ASM | 1 |
 | CK / CK_TILE | 1 |
+| Paged Attention | 1 |
+| Docs | 1 |
 | RMSNorm / LayerNorm | 1 |
 
 ---
@@ -46,12 +48,12 @@ Modular RDMA Interface — MORI-EP (Expert Parallel), MORI-IO (KVCache P2P), MOR
 | Component | Commits |
 |-----------|:-------:|
 | CI / Build | 3 |
-| MORI-IO (KVCache / P2P) | 2 |
+| MORI-EP (Expert Parallel) | 2 |
+| MORI-IO (KVCache / P2P) | 1 |
 | Env / Config | 1 |
 | MORI-CCL (Collectives) | 1 |
 | CLI / Tools | 1 |
 | JIT / IR / FlyDSL | 1 |
-| MORI-EP (Expert Parallel) | 1 |
 
 ---
 
