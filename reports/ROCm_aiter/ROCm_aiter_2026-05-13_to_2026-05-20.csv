@@ -1,0 +1,59 @@
+date,sha,pr,component,message,author,files,url
+2026-05-19,2ca49b1a06,3228,GEMM,Add gfx1201 fp8 gemm configs (#3228),skysnow2001,,https://github.com/ROCm/aiter/commit/2ca49b1a06
+2026-05-19,09eaecaf2f,3236,OPUS / ASM,[opus] gfx1201/gfx1200 (RDNA4) support: parse + buffer rsrc + WMMA w32/w64 (#3236),carlushuang,,https://github.com/ROCm/aiter/commit/09eaecaf2f
+2026-05-19,12c7120b86,3128,MLA,hsa/gfx942/mla: fix BF16 mla_qh8 LDS size + add FP8 mla_qh8 kernel (#3128),alexioslyrakis-amd,,https://github.com/ROCm/aiter/commit/12c7120b86
+2026-05-19,f061fba914,2695,Triton Kernels,triton>=3.6.0 (#2695),Michael Melesse,,https://github.com/ROCm/aiter/commit/f061fba914
+2026-05-19,20c48e996c,3150,MHA / Attention,[CK_TILE] FMHA BWD: stream-async workspace prepare for group mode (#3150),Yi DING,,https://github.com/ROCm/aiter/commit/20c48e996c
+2026-05-19,67029537cc,3255,GEMM,"perf(gemm_dispatch): POD lookup key + raw fn-ptr value, compile time speedup (#3255)",lijinpei-amd,,https://github.com/ROCm/aiter/commit/67029537cc
+2026-05-19,88b2eca607,3208,MoE,[Bugfix][CKTile] Use local expert ids for MoE bias activation (#3208),XiaobingZhang,,https://github.com/ROCm/aiter/commit/88b2eca607
+2026-05-19,2f0d9a6885,3239,CI / Build,CI: auto-update split test FILE_TIMES (#3239),github-actions[bot],,https://github.com/ROCm/aiter/commit/2f0d9a6885
+2026-05-19,13e5a53229,3259,Triton Kernels,[TRITON][GLUON] Change Boundary Mask for Gluon MQA (#3259),Mehmet Cagri,,https://github.com/ROCm/aiter/commit/13e5a53229
+2026-05-18,c69b84ef0b,3226,Quantization,[TRITON][GLUON] Add fp8_mqa_logits gluon kernel for gfx950 and gfx1250 (#3226),Mehmet Cagri,,https://github.com/ROCm/aiter/commit/c69b84ef0b
+2026-05-18,32e1e6d769,3250,Other,cpp_extension: fix crash if compiler is not found (#3250),Daniele,,https://github.com/ROCm/aiter/commit/32e1e6d769
+2026-05-18,ee28d47acc,3245,Other,fix gather high concurrency fault (#3245),Jiayun,,https://github.com/ROCm/aiter/commit/ee28d47acc
+2026-05-18,810ed91e90,3164,Other,feat(aot): align FlyDSL AOT precompile with runtime cache keys (#3164),Elton,,https://github.com/ROCm/aiter/commit/810ed91e90
+2026-05-18,daa79510c4,3178,CI / Build,CI: use vultr 325 runner labels (#3178),Xin Huang,,https://github.com/ROCm/aiter/commit/daa79510c4
+2026-05-18,79624295c8,3237,GEMM,Optimize mHC hip kernel performce(Adjust fp32 gemm pipeline and add NT cache policy to memory bound case) (#3237),la,,https://github.com/ROCm/aiter/commit/79624295c8
+2026-05-18,1eb1c9bbbf,2999,Other,Replace QH16 bf16 kernel with a new one that does not use ptr_RP (#2999),Sergey Solovyev,,https://github.com/ROCm/aiter/commit/1eb1c9bbbf
+2026-05-18,7a1972d635,3223,GEMM,fix mi350 bf16gemm issue when m is not multiple of 16 (#3223),tingchen988,,https://github.com/ROCm/aiter/commit/7a1972d635
+2026-05-18,c392171007,3043,CI / Build,"Revert ""CI: Temporarily use previous vllm nightly image (#3043)"" (#3102)",Xin Huang,,https://github.com/ROCm/aiter/commit/c392171007
+2026-05-18,32c7dfce39,3240,CI / Build,CI: Use aiter-8gpu-runner to run vLLM benchmark (#3240),Xin Huang,,https://github.com/ROCm/aiter/commit/32c7dfce39
+2026-05-18,98dfb20bbf,3219,Other,aiter/__init__: do not swallow import errors on Linux (#3219),Xin Huang,,https://github.com/ROCm/aiter/commit/98dfb20bbf
+2026-05-18,0082f61fdb,2854,Other,[FLYDSL] Add GDR prefill chunk_gdn_fwd_h kernel for MI35X (#2854),Sealeen Zhang,,https://github.com/ROCm/aiter/commit/0082f61fdb
+2026-05-18,559411e925,3238,GEMM,feat(configs): add DSv4-Pro MTP spec-decoding tuned GEMM shapes (#3238),Lingpeng Jin,,https://github.com/ROCm/aiter/commit/559411e925
+2026-05-17,c1d23fc94e,3235,Other,Guard sparse indexer padding and mapped tokens (#3235),XiaobingZhang,,https://github.com/ROCm/aiter/commit/c1d23fc94e
+2026-05-17,47fcd00c69,3232,Other,[FLYDSL] bump version to 0.1.8 (#3232),Felix Li,,https://github.com/ROCm/aiter/commit/47fcd00c69
+2026-05-16,11dfa25a40,3233,MLA,Fix TP4 bf16 MLA persistent dispatch (#3233),XiaobingZhang,,https://github.com/ROCm/aiter/commit/11dfa25a40
+2026-05-16,d9e660bcab,3151,Other,[tune] add EP tuned configs (#3151),inkcherry,,https://github.com/ROCm/aiter/commit/d9e660bcab
+2026-05-16,78ef4be9d6,3209,MoE,Revert kimik2_fp4_tuned_fmoe.csv changes from PR #3004 (#3209),Oxana Korzh,,https://github.com/ROCm/aiter/commit/78ef4be9d6
+2026-05-15,6646e699d5,2968,MoE,[TRITON] Add Triton TDM to MoE Metadata kernels  (#2968),Nicholas Susanto,,https://github.com/ROCm/aiter/commit/6646e699d5
+2026-05-15,a3b3577741,2494,MoE,[TRITON] Moe a8w4 on gfx1250 (#2494),Lukasz Burzawa,,https://github.com/ROCm/aiter/commit/a3b3577741
+2026-05-15,683b6e8392,2578,Triton Kernels,[TRITON] silu_mul_fused kernel (#2578),Tianxing Wu,,https://github.com/ROCm/aiter/commit/683b6e8392
+2026-05-15,60da1cf36b,3187,Triton Kernels,[TRITON] Remove precision ieee from non-F32 tl.dots (#3187),Vinayak Gokhale,,https://github.com/ROCm/aiter/commit/60da1cf36b
+2026-05-15,7cfe51983c,3224,Quantization,"Revert ""[TRITON][GLUON] Add fp8_mqa_logits gluon kernel for gfx950 and gfx1250"" (#3224)",Lingpeng Jin,,https://github.com/ROCm/aiter/commit/7cfe51983c
+2026-05-15,b9b5e802da,3215,CI / Build,CI: add aiter GPU visibility diagnostics (#3215),Xin Huang,,https://github.com/ROCm/aiter/commit/b9b5e802da
+2026-05-15,cd9d230ab5,3189,Other,"[custom_all_reduce] qknorm_allreduce_fusion_kernel_2stage: grid-strided loop, drop 80-token cap (#3189)",akii96,,https://github.com/ROCm/aiter/commit/cd9d230ab5
+2026-05-15,1ac53e9ba5,3073,CK / CK_TILE,chore: bump composable_kernel to include rocm-libraries PR #6914 (#3073),ArthurLiu,,https://github.com/ROCm/aiter/commit/1ac53e9ba5
+2026-05-15,e0bbd84bbe,3185,Other,Add fused DeepSeek-V3.2 indexer cache kernel (#3185),XiaobingZhang,,https://github.com/ROCm/aiter/commit/e0bbd84bbe
+2026-05-14,1fb097478c,3116,MoE,perf(moe_gemm_a8w4): tune block_m=32 & block_m=128 config for MI355X / gpt-oss-120b (#3116),JohnQinAMD,,https://github.com/ROCm/aiter/commit/1fb097478c
+2026-05-14,9da8f023aa,3190,Triton Kernels,[Triton] [ATOM] DSV4 fusion phase2 (#3190),Shao-Chun Lee,,https://github.com/ROCm/aiter/commit/9da8f023aa
+2026-05-14,09e21f3ee9,3174,Quantization,[TRITON][GLUON] Add fp8_mqa_logits gluon kernel for gfx950 and gfx1250 (#3174),Mehmet Cagri,,https://github.com/ROCm/aiter/commit/09e21f3ee9
+2026-05-14,3b290a3158,3182,Other,fix gather mem violation (#3182),Jiayun,,https://github.com/ROCm/aiter/commit/3b290a3158
+2026-05-14,d50194cae2,3145,Quantization,add silu_and_mul_quant and Opt silu_and_mul (#3145),yzhou103,,https://github.com/ROCm/aiter/commit/d50194cae2
+2026-05-14,8d47409af7,3170,Other,docs: add AITER May 2026 newsletter (#3170),Peng,,https://github.com/ROCm/aiter/commit/8d47409af7
+2026-05-14,b8aacd39ac,3171,GEMM,Remove triton backend in dsv4_bf16_tuned_gemm.csv (#3171),la,,https://github.com/ROCm/aiter/commit/b8aacd39ac
+2026-05-14,878008c343,3134,Other,So/flydsl xcd remap v2 (#3134),BingYuan.Zhou,,https://github.com/ROCm/aiter/commit/878008c343
+2026-05-14,5104dcaa3d,3046,Other,"Add nhead128,1 mask=1 to support mtp < 4, nhead128,4 fold to m16x4 kernel (#3046)",fangche123,,https://github.com/ROCm/aiter/commit/5104dcaa3d
+2026-05-14,99855d5928,2948,MHA / Attention,[CK_TILE] Use Unified Workspace for FMHA BWD (#2948),Yi DING,,https://github.com/ROCm/aiter/commit/99855d5928
+2026-05-13,03c55d0cf7,3166,GEMM,[Bugfix][Triton] Honor `transpose_bm` in batched_gemm_a16wfp4_ fake tensor (#3166),xaguilar-amd,,https://github.com/ROCm/aiter/commit/03c55d0cf7
+2026-05-13,bff63dc7b8,2902,RMSNorm / LayerNorm,"feat(triton/rope): fused QKV split, QK RMSNorm, RoPE, and paged KV cache (#2902)",hellozhuo-amd,,https://github.com/ROCm/aiter/commit/bff63dc7b8
+2026-05-13,ca87417e6e,3132,MoE,[Triton] Add s_barrier to sync waves after writing expert hist (#3132),Vinayak Gokhale,,https://github.com/ROCm/aiter/commit/ca87417e6e
+2026-05-13,4df783aa9d,3163,Other,minimax ops: support fused qknorm+allreduce kernel (#3163),Yutao Xu,,https://github.com/ROCm/aiter/commit/4df783aa9d
+2026-05-13,f0dfa742f7,3135,Other,[FLYDSL] Optimize GDR decode kernel (#3135),Yutao Xu,,https://github.com/ROCm/aiter/commit/f0dfa742f7
+2026-05-13,a9f82ae08f,3154,Triton Kernels,[TRITON] Fix bug in `bench_gmm.py` (#3154),Bruno Mazzotti,,https://github.com/ROCm/aiter/commit/a9f82ae08f
+2026-05-13,5e3fe77613,2967,Triton Kernels,[TRITON] mHC-post: Apply post-stream and res-stream mixing w/ mhc config optimizations (#2967),Waqar Ahmed,,https://github.com/ROCm/aiter/commit/5e3fe77613
+2026-05-13,1d4c414893,2920,Triton Kernels,refactor and unify triton/bench_fav3_sage.py scripts (#2920),Jesús Carabaño,,https://github.com/ROCm/aiter/commit/1d4c414893
+2026-05-13,b4cd32c917,3137,Quantization,[qk_rmsnorm_group_quant] refactor hip kl (#3137),amd-ruitang3,,https://github.com/ROCm/aiter/commit/b4cd32c917
+2026-05-13,bb8eabea4e,3136,Quantization,Add explicit num_stages to blockscale triton kernel to pipeline non-dot loads (#3136),lijinpei-amd,,https://github.com/ROCm/aiter/commit/bb8eabea4e
+2026-05-13,0c0ce738d8,3153,MoE,[MoE] Align FlyDSL MXFP4 rounding (#3153),XiaobingZhang,,https://github.com/ROCm/aiter/commit/0c0ce738d8
+2026-05-13,ccb21de005,3133,Other,flydsl/common: per-kernel parallelism + configurable AOT pool size (#3133),Maksim (Max) Podkorytov,,https://github.com/ROCm/aiter/commit/ccb21de005
