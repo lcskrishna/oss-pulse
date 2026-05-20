@@ -2,8 +2,8 @@
 """
 Track weekly changes in a GitHub repository and produce a structured report.
 
-Understands the ROCm/aiter repo layout — groups commits by operator/component
-and highlights what changed in each area (MoE, MLA, GEMM, Attention, etc.).
+Supports ROCm/aiter and ROCm/mori with repo-specific component classifiers.
+Easily extensible to any other repo via REPO_CLASSIFIERS below.
 
 Usage:
     python3 track_repo_changes.py [--repo OWNER/REPO] [--since YYYY-MM-DD]
@@ -29,33 +29,88 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# Component classifier
+# Per-repo component classifiers
+# Each entry: (display_label, [keywords matched against lowercased
+#              commit message + changed file paths])
+# Order matters — first match wins.
 # ---------------------------------------------------------------------------
 
-COMPONENT_RULES = [
-    ("MoE",                  ["moe", "fused_moe", "expert", "topk", "gating", "moe_sorting"]),
-    ("MLA",                  ["mla", "multi_latent", "concat_cache_mla"]),
-    ("MHA / Attention",      ["mha", "fmha", "flash_attn", "batch_prefill", "varlen"]),
-    ("Paged Attention",      ["paged_attn", "pa_", "/pa.", "kvcache"]),
-    ("GEMM",                 ["gemm", "tuned_gemm", "deepgemm", "batched_gemm", "scaled_mm"]),
-    ("Quantization",         ["quant", "mxfp4", "fp8", "int4", "int8", "smoothquant", "blockscale"]),
-    ("RMSNorm / LayerNorm",  ["rmsnorm", "layernorm", "groupnorm", "fused_qk_norm"]),
-    ("RoPE / Embedding",     ["rope", "rotary", "embedding"]),
-    ("Sampling",             ["sampling", "sample"]),
-    ("Triton Kernels",       ["triton", "gluon"]),
-    ("CK / CK_TILE",         ["ck_tile", "cktile", "[ck]", "composable_kernel"]),
-    ("OPUS / ASM",           ["opus", "hsa/", "asm", "gfx942", "gfx950", "gfx1201"]),
-    ("CI / Build",           ["ci:", "[ci]", "cmake", "setup.py", "pyproject", "requirements",
-                               "auto-update", "split test", "githooks"]),
-    ("Docs",                 ["readme", "docs/", "changelog", "contribute"]),
+REPO_CLASSIFIERS: dict[str, list] = {
+
+    "ROCm/aiter": [
+        ("MoE",                 ["moe", "fused_moe", "expert", "topk", "gating", "moe_sorting"]),
+        ("MLA",                 ["mla", "multi_latent", "concat_cache_mla"]),
+        ("MHA / Attention",     ["mha", "fmha", "flash_attn", "batch_prefill", "varlen"]),
+        ("Paged Attention",     ["paged_attn", "pa_", "/pa.", "kvcache"]),
+        ("GEMM",                ["gemm", "tuned_gemm", "deepgemm", "batched_gemm", "scaled_mm"]),
+        ("Quantization",        ["quant", "mxfp4", "fp8", "int4", "int8", "smoothquant", "blockscale"]),
+        ("RMSNorm / LayerNorm", ["rmsnorm", "layernorm", "groupnorm", "fused_qk_norm"]),
+        ("RoPE / Embedding",    ["rope", "rotary", "embedding"]),
+        ("Sampling",            ["sampling", "sample"]),
+        ("Triton Kernels",      ["triton", "gluon"]),
+        ("CK / CK_TILE",        ["ck_tile", "cktile", "[ck]", "composable_kernel"]),
+        ("OPUS / ASM",          ["opus", "hsa/", "asm", "gfx942", "gfx950", "gfx1201"]),
+        ("CI / Build",          ["ci:", "[ci]", "cmake", "setup.py", "pyproject", "requirements",
+                                  "auto-update", "split test", "githooks"]),
+        ("Docs",                ["readme", "docs/", "changelog", "contribute"]),
+    ],
+
+    "ROCm/mori": [
+        # Applications — highest priority, most specific
+        ("MORI-EP (Expert Parallel)",   ["src/ops", "dispatch_combine", "ep_local", "internode",
+                                          "(ep)", "feat(ep)", "fix(ep)", "perf(ep)",
+                                          "mori-ep", "dispatch", "combine"]),
+        ("MORI-IO (KVCache / P2P)",     ["src/io", "python/mori/io", "scatter_gather",
+                                          "(io)", "feat(io)", "fix(io)",
+                                          "mori-io", "kvcache", "p2p", "xgmi fallback"]),
+        ("MORI-CCL (Collectives)",      ["src/collective", "python/mori/ccl", "allgather",
+                                          "allreduce", "all2all", "collective",
+                                          "(ccl)", "feat(ccl)", "fix(ccl)"]),
+        ("MORI-UMBP (Memory Pool)",     ["src/umbp", "umbp", "memory pool", "tiered"]),
+        # Framework building blocks
+        ("RDMA / Transport",            ["rdma", "ibgda", "transport", "qp ", "pollcq",
+                                          "connectx", "bnxt", "thor2", "ainic", "pensando",
+                                          "ibverbs", "providers/", "mlx5", "mtu"]),
+        ("SDMA / Shared Memory",        ["sdma", "shmem", "symmmem", "symmetric_memory",
+                                          "src/shmem", "smem"]),
+        ("Bootstrap / Topology",        ["bootstrap", "topology", "socket_bootstrap",
+                                          "torch_bootstrap", "mpi_bootstrap"]),
+        ("Memory / VA Management",      ["memory_region", "va_manager", "allocator",
+                                          "memory region", "va manager"]),
+        ("JIT / IR / FlyDSL",           ["jit", "flydsl", "fly_dsl", "python/mori/ir",
+                                          "bitcode", "(jit)", "feat(jit)", "fix(jit)"]),
+        ("Quantization",                ["fp8", "blockwise", "quant", "int8"]),
+        ("CI / Build",                  ["ci:", "[ci]", "cmake", "workflow", "nightly",
+                                          "wheel", "pypi", "gh-pages", "docker"]),
+        ("Env / Config",                ["env_setup", "env_check", "(env)", "feat(env)",
+                                          "fix(env)", "dscp", "mori_enable", "mori_disable"]),
+        ("CLI / Tools",                 ["(cli)", "feat(cli)", "console entry", "tools/"]),
+        ("Docs",                        ["readme", "docs/", "changelog", "changelog"]),
+        ("Benchmarks / Tests",          ["benchmark/", "tests/", "perf test", "latency", "bandwidth"]),
+    ],
+}
+
+# Fallback generic classifier used when a repo isn't in REPO_CLASSIFIERS
+GENERIC_RULES = [
+    ("Fix",         ["fix", "bugfix", "bug fix", "hotfix"]),
+    ("Feature",     ["feat", "feature", "add", "implement"]),
+    ("Performance", ["perf", "optim", "speed", "throughput", "latency"]),
+    ("CI / Build",  ["ci", "cmake", "build", "workflow", "docker"]),
+    ("Docs",        ["readme", "docs", "changelog"]),
+    ("Refactor",    ["refactor", "cleanup", "reorg", "restructure"]),
+    ("Test",        ["test", "bench"]),
 ]
 
 
-def classify(commit: dict) -> str:
+def get_rules(repo: str) -> list:
+    return REPO_CLASSIFIERS.get(repo, GENERIC_RULES)
+
+
+def classify(commit: dict, rules: list) -> str:
     msg = commit["message"].lower()
     files = [f.lower() for f in commit.get("files", [])]
     combined = msg + " " + " ".join(files)
-    for label, keywords in COMPONENT_RULES:
+    for label, keywords in rules:
         if any(kw in combined for kw in keywords):
             return label
     return "Other"
@@ -259,8 +314,9 @@ def main():
                 print(f" {i+1}", end="", flush=True)
         print()
 
+    rules = get_rules(repo)
     for c in commits:
-        c["component"] = classify(c)
+        c["component"] = classify(c, rules)
 
     by_component: dict = defaultdict(list)
     for c in commits:

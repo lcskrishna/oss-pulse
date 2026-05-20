@@ -32,6 +32,14 @@ jobs:
             --repo ROCm/aiter \
             --format both
 
+      - name: Run tracker — ROCm/mori
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/track_repo_changes.py \
+            --repo ROCm/mori \
+            --format both
+
       - name: Update root dashboard
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

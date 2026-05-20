@@ -9,6 +9,7 @@
 | Repository | Description | Last Report | Commit Activity |
 |------------|-------------|:-----------:|:---------------:|
 | [ROCm/aiter](https://github.com/ROCm/aiter) | AI Tensor Engine for ROCm — optimized GPU kernels (MoE, MLA, GEMM, Attention) | [2026-05-13 → 2026-05-20](reports/ROCm_aiter/ROCm_aiter_2026-05-13_to_2026-05-20.md) | ![last-commit](https://img.shields.io/github/last-commit/ROCm/aiter?style=flat-square) |
+| [ROCm/mori](https://github.com/ROCm/mori) | Modular RDMA Interface — MORI-EP (Expert Parallel), MORI-IO (KVCache P2P), MORI-CCL | [2026-05-13 → 2026-05-20](reports/ROCm_mori/ROCm_mori_2026-05-13_to_2026-05-20.md) | ![last-commit](https://img.shields.io/github/last-commit/ROCm/mori?style=flat-square) |
 
 ---
 
@@ -33,4 +34,4 @@ python scripts/track_repo_changes.py --repo ROCm/aiter --no-files
 
 ---
 
-_Dashboard last updated: 2026-05-20 02:12 UTC_
+_Dashboard last updated: 2026-05-20 02:20 UTC_

@@ -17,6 +17,13 @@ TRACKED = [
         "badge": "https://img.shields.io/github/last-commit/ROCm/aiter",
         "link":  "https://github.com/ROCm/aiter",
     },
+    {
+        "repo":  "ROCm/mori",
+        "desc":  "Modular RDMA Interface — MORI-EP (Expert Parallel), MORI-IO (KVCache P2P), MORI-CCL",
+        "slug":  "ROCm_mori",
+        "badge": "https://img.shields.io/github/last-commit/ROCm/mori",
+        "link":  "https://github.com/ROCm/mori",
+    },
     # Add more repos here as you onboard them
 ]
 
