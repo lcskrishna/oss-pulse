@@ -40,6 +40,38 @@ jobs:
             --repo ROCm/mori \
             --format both
 
+      - name: Run tracker — sgl-project/sglang
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/track_repo_changes.py \
+            --repo sgl-project/sglang \
+            --format both
+
+      - name: Run tracker — vllm-project/vllm
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/track_repo_changes.py \
+            --repo vllm-project/vllm \
+            --format both
+
+      - name: Run tracker — NVIDIA/TensorRT-LLM
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/track_repo_changes.py \
+            --repo NVIDIA/TensorRT-LLM \
+            --format both
+
+      - name: Run tracker — NVIDIA/TensorRT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/track_repo_changes.py \
+            --repo NVIDIA/TensorRT \
+            --format both
+
       - name: Update root dashboard
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

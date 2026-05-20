@@ -2,8 +2,10 @@
 """
 Track weekly changes in a GitHub repository and produce a structured report.
 
-Supports ROCm/aiter and ROCm/mori with repo-specific component classifiers.
-Easily extensible to any other repo via REPO_CLASSIFIERS below.
+Supports ROCm/aiter, ROCm/mori, sgl-project/sglang, vllm-project/vllm,
+NVIDIA/TensorRT-LLM, and NVIDIA/TensorRT with repo-specific classifiers.
+Also surfaces ROCm-related commits/issues in each report.
+Easily extensible via REPO_CLASSIFIERS below.
 
 Usage:
     python3 track_repo_changes.py [--repo OWNER/REPO] [--since YYYY-MM-DD]
@@ -85,8 +87,124 @@ REPO_CLASSIFIERS: dict[str, list] = {
         ("Env / Config",                ["env_setup", "env_check", "(env)", "feat(env)",
                                           "fix(env)", "dscp", "mori_enable", "mori_disable"]),
         ("CLI / Tools",                 ["(cli)", "feat(cli)", "console entry", "tools/"]),
-        ("Docs",                        ["readme", "docs/", "changelog", "changelog"]),
+        ("Docs",                        ["readme", "docs/", "changelog"]),
         ("Benchmarks / Tests",          ["benchmark/", "tests/", "perf test", "latency", "bandwidth"]),
+    ],
+
+    "sgl-project/sglang": [
+        # Core inference features
+        ("Prefill / Decode Disaggregation", ["[pd]", "disaggregat", "srt/disaggregation",
+                                              "prefill_decode", "pd_disagg", "mooncake"]),
+        ("MoE / Expert Parallel",       ["moe", "expert parallel", "eplb", "elastic_ep",
+                                          "srt/elastic_ep", "srt/eplb", "fused_moe"]),
+        ("Attention / FlashInfer",      ["attention", "flash", "flashinfer", "mla", "mha",
+                                          "batch_prefill", "varlen", "nsa", "gqa"]),
+        ("KV Cache / Memory",           ["kv cache", "kvcache", "mem_cache", "srt/mem_cache",
+                                          "radix", "chunk", "memory pool", "paged"]),
+        ("Quantization",                ["quant", "fp8", "int4", "int8", "mxfp4", "awq", "gptq",
+                                          "bnb", "blockscale"]),
+        ("Multimodal",                  ["multimodal", "vlm", "vision", "image", "video",
+                                          "audio", "srt/multimodal", "[vlm]", "diffusion"]),
+        ("LoRA",                        ["lora", "srt/lora", "adapter"]),
+        ("Speculative Decoding",        ["speculative", "draft", "eagle", "medusa"]),
+        ("Structured Output",           ["constrained", "structured", "json schema", "grammar",
+                                          "xgrammar", "srt/constrained", "function_call"]),
+        ("Scheduler / Batching",        ["scheduler", "batching", "continuous batch",
+                                          "srt/managers", "srt/batch"]),
+        ("Tensor / Data Parallel",      ["tensor parallel", "data parallel", "tp", "dp",
+                                          "srt/distributed", "pipeline"]),
+        ("ROCm / AMD",                  ["rocm", "amd", "aiter", "hip", "gfx", "mi3",
+                                          "amd-ci", "nightly-test-amd"]),
+        ("Triton / Kernels",            ["triton", "sgl-kernel", "kernel", "cuda", "hip kernel"]),
+        ("Models",                      ["srt/models", "[model]", "deepseek", "llama", "qwen",
+                                          "mistral", "gemma", "phi", "falcon"]),
+        ("Serving / API",               ["openai", "api server", "grpc", "http", "srt/entrypoints",
+                                          "srt/grpc", "openai compatible"]),
+        ("CI / Build",                  ["ci:", "[ci]", "workflow", "docker", "nightly", "cmake"]),
+        ("Docs / Examples",             ["readme", "docs", "example", "tutorial"]),
+    ],
+
+    "vllm-project/vllm": [
+        # ROCm/AMD — highest priority so it's always surfaced
+        ("ROCm / AMD",                  ["rocm", "amd", "aiter", "hip", "gfx9", "mi3",
+                                          "csrc/rocm", "test-amd", "rocm-base",
+                                          "[rocm]", "[amd]", "vllm/_aiter"]),
+        # Core inference
+        ("MoE / Expert Parallel",       ["moe", "expert parallel", "fused_moe", "topk",
+                                          "vllm/model_executor/layers/fused_moe",
+                                          "enable-expert-parallel", "ep_size"]),
+        ("Attention",                   ["attention", "flash", "flashinfer", "mla", "mha",
+                                          "paged_attn", "vllm/attention", "flashattn"]),
+        ("KV Cache / Offload",          ["kv cache", "kv offload", "kvcache", "prefix caching",
+                                          "vllm/core/block", "radix", "chunk prefill"]),
+        ("Quantization",                ["quant", "fp8", "int4", "int8", "mxfp4", "nvfp4",
+                                          "awq", "gptq", "blockscale", "csrc/quantization"]),
+        ("Speculative Decoding",        ["speculative", "draft", "eagle", "medusa", "ngram"]),
+        ("Multimodal",                  ["multimodal", "vlm", "vision", "image", "video",
+                                          "audio", "vllm/multimodal", "[vlm]"]),
+        ("LoRA",                        ["lora", "vllm/lora", "adapter", "[lora]"]),
+        ("Disaggregation / PD",         ["disaggregat", "prefill_decode", "pd_disagg",
+                                          "vllm/distributed", "mooncake", "[pd]"]),
+        ("Scheduler / Engine",          ["scheduler", "engine", "vllm/engine", "vllm/core",
+                                          "continuous batch", "async engine"]),
+        ("Compilation / CUDA Graph",    ["cuda graph", "torch.compile", "vllm/compilation",
+                                          "piecewise", "graph capture"]),
+        ("Models",                      ["vllm/model_executor/models", "[model]", "deepseek",
+                                          "llama", "qwen", "mistral", "gemma", "cohere"]),
+        ("Serving / API",               ["openai", "api server", "vllm/entrypoints", "grpc",
+                                          "vllm serve", "openai compatible"]),
+        ("Distributed",                 ["tensor parallel", "pipeline parallel", "vllm/distributed",
+                                          "tp_size", "pp_size", "all_reduce"]),
+        ("CI / Build",                  ["[ci]", "ci:", "buildkite", "cmake", "docker",
+                                          "nightly", "requirements"]),
+        ("Perf / Benchmark",            ["[perf]", "benchmark", "throughput", "latency",
+                                          "vllm/benchmarks"]),
+        ("Docs",                        ["readme", "docs/", "[doc]", "changelog"]),
+    ],
+
+    "NVIDIA/TensorRT-LLM": [
+        # ROCm/AMD — surface first
+        ("ROCm / AMD",                  ["rocm", "amd", "hip", "mi3", "opt_flags_amd",
+                                          "triton_kernels/matmul_ogs_details/opt_flags_amd"]),
+        # Core features
+        ("MoE",                         ["moe", "expert", "mixtral", "topk", "gating",
+                                          "cutlass moe", "fused_moe", "moe_backend"]),
+        ("Attention",                   ["attention", "flash", "mla", "mha", "fmha",
+                                          "flashinfer", "paged kv", "attention_backend"]),
+        ("Quantization",                ["quant", "fp8", "int4", "int8", "nvfp4", "mxfp4",
+                                          "awq", "gptq", "blockscale", "calibr"]),
+        ("Speculative Decoding",        ["speculative", "eagle", "draft", "medusa", "ngram"]),
+        ("Disaggregation / KV",         ["disaggregat", "kv transfer", "kv cache",
+                                          "_torch/disaggregation", "pd_disagg"]),
+        ("LoRA",                        ["lora", "adapter", "lora_manager"]),
+        ("Executor / Runtime",          ["executor", "runtime", "trtllm/executor",
+                                          "llmapi", "_torch/llm", "overlap scheduling",
+                                          "early emission"]),
+        ("AutoDeploy",                  ["autodeploy", "auto_deploy", "auto-deploy",
+                                          "_torch/auto_deploy"]),
+        ("Models",                      ["deepseek", "llama", "qwen", "gemma", "phi",
+                                          "falcon", "mistral", "kimi", "gpt"]),
+        ("Torch Path (_torch)",         ["_torch/", "torch path", "pytorch"]),
+        ("Compilation / Graph",         ["compilation", "cuda graph", "graph rewrite",
+                                          "_torch/compilation", "trtllm/compilation"]),
+        ("Perf",                        ["[perf]", "perf]", "throughput", "latency", "scheduling"]),
+        ("CI / Infra",                  ["[infra]", "[none][infra]", "ci", "nightly", "lock file",
+                                          "waive", "blossom", "jenkins"]),
+        ("Docs / Examples",             ["readme", "docs/", "example", "changelog"]),
+    ],
+
+    "NVIDIA/TensorRT": [
+        # TensorRT is lower-velocity; classify by area
+        ("Plugins",                     ["plugin/", "custom plugin", "qkv", "nms", "bert",
+                                          "fused multihead"]),
+        ("ONNX / Parser",               ["onnx", "parser", "graphsurgeon", "onnx_graphsurgeon"]),
+        ("Python API",                  ["python/", "pyproject", "pybind"]),
+        ("Samples / Demo",              ["sample", "demo/", "quickstart"]),
+        ("Build / CMake",               ["cmake", "build", "docker", "toolchain"]),
+        ("Quantization",                ["quant", "fp8", "int8", "int4", "calibr", "ptq", "qat"]),
+        ("Safety / Embedded",           ["safety", "cudla", "qnx", "aarch64", "jetson"]),
+        ("Release / Docs",              ["release", "readme", "docs", "roadmap", "changelog",
+                                          "10.", "11."]),
     ],
 }
 
@@ -176,16 +294,106 @@ def fetch_commit_files(repo: str, sha: str) -> list:
         return []
 
 
+# ROCm keywords used to spotlight relevant commits and issues
+ROCM_KEYWORDS = ["rocm", "amd", "aiter", "hip", "gfx9", "mi3", "mi300", "mi325", "mi355",
+                  "cdna", "mori", "rdma", "ibgda"]
+
+
+def is_rocm_related(text: str) -> bool:
+    t = text.lower()
+    return any(kw in t for kw in ROCM_KEYWORDS)
+
+
+def fetch_rocm_issues(repo: str, since: str) -> list:
+    """Fetch open issues updated since `since` that mention ROCm/AMD."""
+    try:
+        path = f"repos/{repo}/issues?state=open&per_page=100&sort=updated&direction=desc"
+        issues = gh_get(path)
+        rocm_issues = []
+        for i in issues:
+            if i.get("pull_request"):   # skip PRs
+                continue
+            text = (i.get("title", "") + " " + (i.get("body") or "")).lower()
+            labels = " ".join(l["name"] for l in i.get("labels", [])).lower()
+            if is_rocm_related(text) or is_rocm_related(labels):
+                rocm_issues.append({
+                    "number":  i["number"],
+                    "title":   i["title"],
+                    "state":   i["state"],
+                    "labels":  ", ".join(l["name"] for l in i.get("labels", [])),
+                    "updated": i["updated_at"][:10],
+                    "url":     i["html_url"],
+                })
+        return rocm_issues[:20]   # cap at 20
+    except Exception:
+        return []
+
+
+# ---------------------------------------------------------------------------
+# New-feature detector — commits that look like additions rather than fixes
+# ---------------------------------------------------------------------------
+
+NEW_FEATURE_SIGNALS = ["feat", "add ", "new ", "support", "implement", "introduce",
+                        "enable", "[feature]", "✨"]
+FIX_SIGNALS         = ["fix", "bugfix", "hotfix", "revert", "workaround", "[fix]"]
+
+
+def is_new_feature(msg: str) -> bool:
+    m = msg.lower()
+    if any(s in m for s in FIX_SIGNALS):
+        return False
+    return any(s in m for s in NEW_FEATURE_SIGNALS)
+
+
 # ---------------------------------------------------------------------------
 # Report builders
 # ---------------------------------------------------------------------------
 
-def build_markdown(commits: list, repo: str, since: str, until: str, by_component: dict) -> str:
+def build_markdown(commits: list, repo: str, since: str, until: str,
+                   by_component: dict, rocm_issues: list) -> str:
     total = len(commits)
     lines = []
     lines.append(f"# {repo} — Weekly Change Report")
     lines.append(f"**Period:** {since} → {until}  |  **Total commits:** {total}\n")
 
+    # ── New features spotlight ──────────────────────────────────────────────
+    new_features = [c for c in commits if is_new_feature(c["message"])]
+    if new_features:
+        lines.append("## ✨ New Features This Week\n")
+        for c in new_features[:10]:
+            pr_link = (f" [#{c['pr']}](https://github.com/{repo}/pull/{c['pr']})"
+                       if c["pr"] else "")
+            lines.append(f"- **{c['date']}**{pr_link} — {c['message']}")
+        if len(new_features) > 10:
+            lines.append(f"- _…and {len(new_features)-10} more_")
+        lines.append("")
+
+    # ── ROCm spotlight ─────────────────────────────────────────────────────
+    rocm_commits = [c for c in commits
+                    if is_rocm_related(c["message"]) or
+                       any(is_rocm_related(f) for f in c.get("files", []))]
+    if rocm_commits or rocm_issues:
+        lines.append("## 🔴 ROCm / AMD Spotlight\n")
+        if rocm_commits:
+            lines.append("### Commits touching ROCm\n")
+            for c in rocm_commits:
+                pr_link = (f" [#{c['pr']}](https://github.com/{repo}/pull/{c['pr']})"
+                           if c["pr"] else "")
+                sha_link = f"[`{c['sha']}`](https://github.com/{repo}/commit/{c['sha']})"
+                lines.append(f"- **{c['date']}** {sha_link}{pr_link} — {c['message']}")
+            lines.append("")
+        if rocm_issues:
+            lines.append("### Open Issues mentioning ROCm / AMD\n")
+            lines.append("| # | Title | Labels | Updated |")
+            lines.append("|---|-------|--------|---------|")
+            for i in rocm_issues:
+                lines.append(
+                    f"| [#{i['number']}]({i['url']}) | {i['title'][:70]} "
+                    f"| {i['labels'] or '—'} | {i['updated']} |"
+                )
+            lines.append("")
+
+    # ── Summary table ───────────────────────────────────────────────────────
     lines.append("## Summary by Component\n")
     lines.append("| Component | Commits |")
     lines.append("|-----------|:-------:|")
@@ -193,13 +401,12 @@ def build_markdown(commits: list, repo: str, since: str, until: str, by_componen
         lines.append(f"| {comp} | {len(items)} |")
     lines.append("")
 
+    # ── Per-component detail ────────────────────────────────────────────────
     for comp, items in sorted(by_component.items(), key=lambda x: -len(x[1])):
         lines.append(f"## {comp}  ({len(items)} commits)\n")
         for c in items:
-            pr_link = (
-                f" [#{c['pr']}](https://github.com/{repo}/pull/{c['pr']})"
-                if c["pr"] else ""
-            )
+            pr_link = (f" [#{c['pr']}](https://github.com/{repo}/pull/{c['pr']})"
+                       if c["pr"] else "")
             sha_link = f"[`{c['sha']}`](https://github.com/{repo}/commit/{c['sha']})"
             lines.append(f"- **{c['date']}** {sha_link}{pr_link}")
             lines.append(f"  {c['message']}")
@@ -217,14 +424,17 @@ def build_markdown(commits: list, repo: str, since: str, until: str, by_componen
 def build_csv(commits: list, repo: str) -> list:
     return [
         {
-            "date":      c["date"],
-            "sha":       c["sha"],
-            "pr":        c["pr"],
-            "component": c["component"],
-            "message":   c["message"],
-            "author":    c["author"],
-            "files":     "; ".join(c["files"][:6]),
-            "url":       f"https://github.com/{repo}/commit/{c['sha']}",
+            "date":        c["date"],
+            "sha":         c["sha"],
+            "pr":          c["pr"],
+            "component":   c["component"],
+            "new_feature": "yes" if is_new_feature(c["message"]) else "",
+            "rocm":        "yes" if (is_rocm_related(c["message"]) or
+                                     any(is_rocm_related(f) for f in c.get("files", []))) else "",
+            "message":     c["message"],
+            "author":      c["author"],
+            "files":       "; ".join(c["files"][:6]),
+            "url":         f"https://github.com/{repo}/commit/{c['sha']}",
         }
         for c in commits
     ]
@@ -326,12 +536,24 @@ def main():
     for comp, items in sorted(by_component.items(), key=lambda x: -len(x[1])):
         print(f"  {len(items):3d}  {comp}")
 
+    print(f"  Fetching open ROCm/AMD issues …")
+    rocm_issues = fetch_rocm_issues(repo, since)
+    print(f"  Found {len(rocm_issues)} ROCm-related open issues")
+
+    rocm_commits = [c for c in commits
+                    if is_rocm_related(c["message"]) or
+                       any(is_rocm_related(f) for f in c.get("files", []))]
+    new_feat_count = sum(1 for c in commits if is_new_feature(c["message"]))
+    print(f"  New features: {new_feat_count}  |  ROCm commits: {len(rocm_commits)}")
+
     date_tag = f"{since}_to_{until}"
 
     if args.format in ("md", "both"):
         md_path = output_dir / f"{repo_slug}_{date_tag}.md"
-        md_path.write_text(build_markdown(commits, repo, since, until, by_component),
-                           encoding="utf-8")
+        md_path.write_text(
+            build_markdown(commits, repo, since, until, by_component, rocm_issues),
+            encoding="utf-8",
+        )
         print(f"\n  Markdown → {md_path}")
 
     if args.format in ("csv", "both"):

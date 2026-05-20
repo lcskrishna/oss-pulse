@@ -25,7 +25,34 @@ TRACKED = [
         "badge": "https://img.shields.io/github/last-commit/ROCm/mori",
         "link":  "https://github.com/ROCm/mori",
     },
-    # Add more repos here as you onboard them
+    {
+        "repo":  "sgl-project/sglang",
+        "desc":  "SGLang inference engine — PD Disaggregation, MoE/EP, Multimodal, LoRA, ROCm",
+        "slug":  "sgl-project_sglang",
+        "badge": "https://img.shields.io/github/last-commit/sgl-project/sglang",
+        "link":  "https://github.com/sgl-project/sglang",
+    },
+    {
+        "repo":  "vllm-project/vllm",
+        "desc":  "vLLM inference engine — Attention, MoE, Quantization, Disaggregation, ROCm",
+        "slug":  "vllm-project_vllm",
+        "badge": "https://img.shields.io/github/last-commit/vllm-project/vllm",
+        "link":  "https://github.com/vllm-project/vllm",
+    },
+    {
+        "repo":  "NVIDIA/TensorRT-LLM",
+        "desc":  "TensorRT-LLM — MoE, Attention, Quantization, AutoDeploy, Disaggregation",
+        "slug":  "NVIDIA_TensorRT-LLM",
+        "badge": "https://img.shields.io/github/last-commit/NVIDIA/TensorRT-LLM",
+        "link":  "https://github.com/NVIDIA/TensorRT-LLM",
+    },
+    {
+        "repo":  "NVIDIA/TensorRT",
+        "desc":  "TensorRT OSS — Plugins, ONNX parser, Python API, Quantization",
+        "slug":  "NVIDIA_TensorRT",
+        "badge": "https://img.shields.io/github/last-commit/NVIDIA/TensorRT",
+        "link":  "https://github.com/NVIDIA/TensorRT",
+    },
 ]
 
 
