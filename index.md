@@ -7,7 +7,7 @@ title: "oss-pulse — Weekly OSS Digest"
 
 > Weekly digest of changes across tracked ROCm OSS repositories.
 
-_Last updated: **2026-05-20 04:16 UTC**_
+_Last updated: **2026-05-25 12:03 UTC**_
 
 ---
 
@@ -17,23 +17,20 @@ AI Tensor Engine for ROCm — optimized GPU kernels (MoE, MLA, GEMM, Attention)
 
 ![last-commit](https://img.shields.io/github/last-commit/ROCm/aiter?style=flat-square)
 
-**Latest report:** [2026-05-13 → 2026-05-20](reports/ROCm_aiter/ROCm_aiter_2026-05-13_to_2026-05-20.md) — **59 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_aiter/)
+**Latest report:** [2026-05-18 → 2026-05-25](reports/ROCm_aiter/ROCm_aiter_2026-05-18_to_2026-05-25.md) — **55 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_aiter/)
 
 | Component | Commits |
 |-----------|:-------:|
-| MoE | 11 |
-| GEMM | 9 |
-| Other | 9 |
-| Quantization | 6 |
-| Triton Kernels | 6 |
+| GEMM | 13 |
+| MoE | 10 |
+| Triton Kernels | 8 |
+| CI / Build | 6 |
+| Quantization | 5 |
 | MLA | 5 |
-| MHA / Attention | 4 |
-| CI / Build | 4 |
-| OPUS / ASM | 1 |
-| CK / CK_TILE | 1 |
+| MHA / Attention | 3 |
+| Other | 3 |
 | Paged Attention | 1 |
-| Docs | 1 |
-| RMSNorm / LayerNorm | 1 |
+| OPUS / ASM | 1 |
 
 ---
 
@@ -43,17 +40,14 @@ Modular RDMA Interface — MORI-EP (Expert Parallel), MORI-IO (KVCache P2P), MOR
 
 ![last-commit](https://img.shields.io/github/last-commit/ROCm/mori?style=flat-square)
 
-**Latest report:** [2026-05-13 → 2026-05-20](reports/ROCm_mori/ROCm_mori_2026-05-13_to_2026-05-20.md) — **10 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_mori/)
+**Latest report:** [2026-05-18 → 2026-05-25](reports/ROCm_mori/ROCm_mori_2026-05-18_to_2026-05-25.md) — **10 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_mori/)
 
 | Component | Commits |
 |-----------|:-------:|
-| CI / Build | 3 |
-| MORI-EP (Expert Parallel) | 2 |
-| MORI-IO (KVCache / P2P) | 1 |
-| Env / Config | 1 |
-| MORI-CCL (Collectives) | 1 |
-| CLI / Tools | 1 |
-| JIT / IR / FlyDSL | 1 |
+| CI / Build | 7 |
+| RDMA / Transport | 1 |
+| Docs | 1 |
+| MORI-EP (Expert Parallel) | 1 |
 
 ---
 
@@ -63,28 +57,28 @@ SGLang inference engine — PD Disaggregation, MoE/EP, Multimodal, LoRA, ROCm
 
 ![last-commit](https://img.shields.io/github/last-commit/sgl-project/sglang?style=flat-square)
 
-**Latest report:** [2026-05-13 → 2026-05-20](reports/sgl-project_sglang/sgl-project_sglang_2026-05-13_to_2026-05-20.md) — **359 commits** &nbsp;·&nbsp; [all reports](reports/sgl-project_sglang/)
+**Latest report:** [2026-05-18 → 2026-05-25](reports/sgl-project_sglang/sgl-project_sglang_2026-05-18_to_2026-05-25.md) — **353 commits** &nbsp;·&nbsp; [all reports](reports/sgl-project_sglang/)
 
 | Component | Commits |
 |-----------|:-------:|
-| Scheduler / Batching | 57 |
-| Prefill / Decode Disaggregation | 48 |
-| Attention / FlashInfer | 42 |
-| MoE / Expert Parallel | 41 |
-| Multimodal | 27 |
-| Other | 21 |
-| KV Cache / Memory | 21 |
+| Scheduler / Batching | 52 |
+| Attention / FlashInfer | 47 |
+| Prefill / Decode Disaggregation | 45 |
+| Multimodal | 42 |
+| MoE / Expert Parallel | 38 |
 | CI / Build | 18 |
-| Quantization | 15 |
-| Triton / Kernels | 12 |
-| Tensor / Data Parallel | 12 |
-| Speculative Decoding | 11 |
-| Docs / Examples | 11 |
+| Speculative Decoding | 17 |
+| Other | 17 |
+| KV Cache / Memory | 15 |
+| Quantization | 14 |
+| Triton / Kernels | 11 |
 | Models | 10 |
-| ROCm / AMD | 8 |
+| Tensor / Data Parallel | 9 |
+| Docs / Examples | 6 |
+| ROCm / AMD | 5 |
 | Serving / API | 3 |
-| LoRA | 1 |
-| Structured Output | 1 |
+| LoRA | 2 |
+| Structured Output | 2 |
 
 ---
 
@@ -94,27 +88,27 @@ vLLM inference engine — Attention, MoE, Quantization, Disaggregation, ROCm
 
 ![last-commit](https://img.shields.io/github/last-commit/vllm-project/vllm?style=flat-square)
 
-**Latest report:** [2026-05-13 → 2026-05-20](reports/vllm-project_vllm/vllm-project_vllm_2026-05-13_to_2026-05-20.md) — **225 commits** &nbsp;·&nbsp; [all reports](reports/vllm-project_vllm/)
+**Latest report:** [2026-05-18 → 2026-05-25](reports/vllm-project_vllm/vllm-project_vllm_2026-05-18_to_2026-05-25.md) — **236 commits** &nbsp;·&nbsp; [all reports](reports/vllm-project_vllm/)
 
 | Component | Commits |
 |-----------|:-------:|
-| ROCm / AMD | 34 |
-| MoE / Expert Parallel | 32 |
-| Attention | 31 |
-| Other | 28 |
-| Disaggregation / PD | 16 |
+| ROCm / AMD | 30 |
+| Other | 29 |
+| MoE / Expert Parallel | 29 |
+| Attention | 27 |
+| Disaggregation / PD | 18 |
 | Multimodal | 16 |
-| Models | 11 |
-| CI / Build | 11 |
-| Quantization | 10 |
+| Quantization | 16 |
+| CI / Build | 16 |
+| Models | 14 |
+| Docs | 8 |
+| Scheduler / Engine | 8 |
 | Serving / API | 8 |
-| Speculative Decoding | 8 |
-| Scheduler / Engine | 6 |
-| KV Cache / Offload | 4 |
+| KV Cache / Offload | 5 |
 | Perf / Benchmark | 4 |
-| Compilation / CUDA Graph | 3 |
-| Docs | 2 |
-| LoRA | 1 |
+| Speculative Decoding | 4 |
+| LoRA | 3 |
+| Compilation / CUDA Graph | 1 |
 
 ---
 
@@ -124,23 +118,24 @@ TensorRT-LLM — MoE, Attention, Quantization, AutoDeploy, Disaggregation
 
 ![last-commit](https://img.shields.io/github/last-commit/NVIDIA/TensorRT-LLM?style=flat-square)
 
-**Latest report:** [2026-05-13 → 2026-05-20](reports/NVIDIA_TensorRT-LLM/NVIDIA_TensorRT-LLM_2026-05-13_to_2026-05-20.md) — **161 commits** &nbsp;·&nbsp; [all reports](reports/NVIDIA_TensorRT-LLM/)
+**Latest report:** [2026-05-18 → 2026-05-25](reports/NVIDIA_TensorRT-LLM/NVIDIA_TensorRT-LLM_2026-05-18_to_2026-05-25.md) — **186 commits** &nbsp;·&nbsp; [all reports](reports/NVIDIA_TensorRT-LLM/)
 
 | Component | Commits |
 |-----------|:-------:|
-| CI / Infra | 43 |
-| Executor / Runtime | 22 |
-| MoE | 22 |
-| Attention | 17 |
-| Quantization | 12 |
-| Torch Path (_torch) | 9 |
-| Disaggregation / KV | 9 |
-| Other | 7 |
-| AutoDeploy | 7 |
-| Models | 4 |
-| Docs / Examples | 4 |
-| Speculative Decoding | 3 |
-| Perf | 2 |
+| CI / Infra | 44 |
+| MoE | 25 |
+| Executor / Runtime | 21 |
+| Attention | 20 |
+| Models | 16 |
+| Other | 14 |
+| Disaggregation / KV | 11 |
+| Quantization | 9 |
+| AutoDeploy | 8 |
+| Torch Path (_torch) | 8 |
+| Speculative Decoding | 6 |
+| Docs / Examples | 2 |
+| LoRA | 1 |
+| Perf | 1 |
 
 ---
 
