@@ -7,7 +7,7 @@ title: "oss-pulse — Weekly OSS Digest"
 
 > Weekly digest of changes across tracked ROCm OSS repositories.
 
-_Last updated: **2026-05-25 12:03 UTC**_
+_Last updated: **2026-06-01 13:49 UTC**_
 
 ---
 
@@ -17,20 +17,22 @@ AI Tensor Engine for ROCm — optimized GPU kernels (MoE, MLA, GEMM, Attention)
 
 ![last-commit](https://img.shields.io/github/last-commit/ROCm/aiter?style=flat-square)
 
-**Latest report:** [2026-05-18 → 2026-05-25](reports/ROCm_aiter/ROCm_aiter_2026-05-18_to_2026-05-25.md) — **55 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_aiter/)
+**Latest report:** [2026-05-25 → 2026-06-01](reports/ROCm_aiter/ROCm_aiter_2026-05-25_to_2026-06-01.md) — **77 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_aiter/)
 
 | Component | Commits |
 |-----------|:-------:|
-| GEMM | 13 |
-| MoE | 10 |
-| Triton Kernels | 8 |
-| CI / Build | 6 |
-| Quantization | 5 |
-| MLA | 5 |
-| MHA / Attention | 3 |
-| Other | 3 |
+| MoE | 22 |
+| GEMM | 15 |
+| Other | 9 |
+| Quantization | 6 |
+| MHA / Attention | 5 |
+| Triton Kernels | 5 |
+| CI / Build | 5 |
+| OPUS / ASM | 4 |
+| MLA | 3 |
 | Paged Attention | 1 |
-| OPUS / ASM | 1 |
+| RMSNorm / LayerNorm | 1 |
+| CK / CK_TILE | 1 |
 
 ---
 
@@ -40,14 +42,13 @@ Modular RDMA Interface — MORI-EP (Expert Parallel), MORI-IO (KVCache P2P), MOR
 
 ![last-commit](https://img.shields.io/github/last-commit/ROCm/mori?style=flat-square)
 
-**Latest report:** [2026-05-18 → 2026-05-25](reports/ROCm_mori/ROCm_mori_2026-05-18_to_2026-05-25.md) — **10 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_mori/)
+**Latest report:** [2026-05-25 → 2026-06-01](reports/ROCm_mori/ROCm_mori_2026-05-25_to_2026-06-01.md) — **5 commits** &nbsp;·&nbsp; [all reports](reports/ROCm_mori/)
 
 | Component | Commits |
 |-----------|:-------:|
-| CI / Build | 7 |
-| RDMA / Transport | 1 |
-| Docs | 1 |
-| MORI-EP (Expert Parallel) | 1 |
+| RDMA / Transport | 3 |
+| JIT / IR / FlyDSL | 1 |
+| MORI-IO (KVCache / P2P) | 1 |
 
 ---
 
@@ -57,28 +58,27 @@ SGLang inference engine — PD Disaggregation, MoE/EP, Multimodal, LoRA, ROCm
 
 ![last-commit](https://img.shields.io/github/last-commit/sgl-project/sglang?style=flat-square)
 
-**Latest report:** [2026-05-18 → 2026-05-25](reports/sgl-project_sglang/sgl-project_sglang_2026-05-18_to_2026-05-25.md) — **353 commits** &nbsp;·&nbsp; [all reports](reports/sgl-project_sglang/)
+**Latest report:** [2026-05-25 → 2026-06-01](reports/sgl-project_sglang/sgl-project_sglang_2026-05-25_to_2026-06-01.md) — **303 commits** &nbsp;·&nbsp; [all reports](reports/sgl-project_sglang/)
 
 | Component | Commits |
 |-----------|:-------:|
-| Scheduler / Batching | 52 |
-| Attention / FlashInfer | 47 |
-| Prefill / Decode Disaggregation | 45 |
-| Multimodal | 42 |
-| MoE / Expert Parallel | 38 |
-| CI / Build | 18 |
-| Speculative Decoding | 17 |
+| Attention / FlashInfer | 60 |
+| Prefill / Decode Disaggregation | 35 |
+| MoE / Expert Parallel | 31 |
+| Multimodal | 22 |
+| KV Cache / Memory | 19 |
+| Speculative Decoding | 18 |
+| Scheduler / Batching | 18 |
 | Other | 17 |
-| KV Cache / Memory | 15 |
-| Quantization | 14 |
-| Triton / Kernels | 11 |
-| Models | 10 |
-| Tensor / Data Parallel | 9 |
+| Triton / Kernels | 16 |
+| Models | 13 |
+| CI / Build | 12 |
+| Tensor / Data Parallel | 11 |
+| ROCm / AMD | 10 |
+| Quantization | 7 |
 | Docs / Examples | 6 |
-| ROCm / AMD | 5 |
-| Serving / API | 3 |
-| LoRA | 2 |
-| Structured Output | 2 |
+| Structured Output | 5 |
+| LoRA | 3 |
 
 ---
 
@@ -88,27 +88,25 @@ vLLM inference engine — Attention, MoE, Quantization, Disaggregation, ROCm
 
 ![last-commit](https://img.shields.io/github/last-commit/vllm-project/vllm?style=flat-square)
 
-**Latest report:** [2026-05-18 → 2026-05-25](reports/vllm-project_vllm/vllm-project_vllm_2026-05-18_to_2026-05-25.md) — **236 commits** &nbsp;·&nbsp; [all reports](reports/vllm-project_vllm/)
+**Latest report:** [2026-05-25 → 2026-06-01](reports/vllm-project_vllm/vllm-project_vllm_2026-05-25_to_2026-06-01.md) — **211 commits** &nbsp;·&nbsp; [all reports](reports/vllm-project_vllm/)
 
 | Component | Commits |
 |-----------|:-------:|
-| ROCm / AMD | 30 |
-| Other | 29 |
-| MoE / Expert Parallel | 29 |
-| Attention | 27 |
-| Disaggregation / PD | 18 |
-| Multimodal | 16 |
-| Quantization | 16 |
-| CI / Build | 16 |
-| Models | 14 |
-| Docs | 8 |
-| Scheduler / Engine | 8 |
-| Serving / API | 8 |
-| KV Cache / Offload | 5 |
-| Perf / Benchmark | 4 |
-| Speculative Decoding | 4 |
-| LoRA | 3 |
-| Compilation / CUDA Graph | 1 |
+| ROCm / AMD | 44 |
+| MoE / Expert Parallel | 26 |
+| Other | 26 |
+| Models | 19 |
+| Multimodal | 15 |
+| Attention | 11 |
+| Serving / API | 10 |
+| Docs | 10 |
+| Scheduler / Engine | 10 |
+| Disaggregation / PD | 10 |
+| Quantization | 9 |
+| CI / Build | 9 |
+| Speculative Decoding | 5 |
+| KV Cache / Offload | 4 |
+| Perf / Benchmark | 3 |
 
 ---
 
@@ -118,24 +116,23 @@ TensorRT-LLM — MoE, Attention, Quantization, AutoDeploy, Disaggregation
 
 ![last-commit](https://img.shields.io/github/last-commit/NVIDIA/TensorRT-LLM?style=flat-square)
 
-**Latest report:** [2026-05-18 → 2026-05-25](reports/NVIDIA_TensorRT-LLM/NVIDIA_TensorRT-LLM_2026-05-18_to_2026-05-25.md) — **186 commits** &nbsp;·&nbsp; [all reports](reports/NVIDIA_TensorRT-LLM/)
+**Latest report:** [2026-05-25 → 2026-06-01](reports/NVIDIA_TensorRT-LLM/NVIDIA_TensorRT-LLM_2026-05-25_to_2026-06-01.md) — **170 commits** &nbsp;·&nbsp; [all reports](reports/NVIDIA_TensorRT-LLM/)
 
 | Component | Commits |
 |-----------|:-------:|
-| CI / Infra | 44 |
-| MoE | 25 |
+| CI / Infra | 41 |
+| Attention | 27 |
+| MoE | 21 |
 | Executor / Runtime | 21 |
-| Attention | 20 |
-| Models | 16 |
-| Other | 14 |
 | Disaggregation / KV | 11 |
+| Torch Path (_torch) | 9 |
 | Quantization | 9 |
-| AutoDeploy | 8 |
-| Torch Path (_torch) | 8 |
-| Speculative Decoding | 6 |
-| Docs / Examples | 2 |
+| Models | 9 |
+| Other | 7 |
+| AutoDeploy | 7 |
+| Docs / Examples | 5 |
+| Speculative Decoding | 2 |
 | LoRA | 1 |
-| Perf | 1 |
 
 ---
 
