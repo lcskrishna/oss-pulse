@@ -4,6 +4,7 @@ Weekly commit digests for [`vllm-project/vllm`](https://github.com/vllm-project/
 
 | Period | Commits | Top Area | Areas Changed |
 |--------|:-------:|----------|---------------|
+| [2026-07-06 → 2026-07-13](./vllm-project_vllm_2026-07-06_to_2026-07-13.md) | 274 | ROCm / AMD (44) | Attention, CI / Build, Compilation / CUDA Graph, Disaggregation / PD |
 | [2026-06-29 → 2026-07-06](./vllm-project_vllm_2026-06-29_to_2026-07-06.md) | 273 | ROCm / AMD (45) | Attention, CI / Build, Compilation / CUDA Graph, Disaggregation / PD |
 | [2026-06-22 → 2026-06-29](./vllm-project_vllm_2026-06-22_to_2026-06-29.md) | 323 | ROCm / AMD (74) | Attention, CI / Build, Compilation / CUDA Graph, Disaggregation / PD |
 | [2026-06-15 → 2026-06-22](./vllm-project_vllm_2026-06-15_to_2026-06-22.md) | 270 | ROCm / AMD (41) | Attention, CI / Build, Compilation / CUDA Graph, Disaggregation / PD |
@@ -14,4 +15,4 @@ Weekly commit digests for [`vllm-project/vllm`](https://github.com/vllm-project/
 | [2026-05-13 → 2026-05-20](./vllm-project_vllm_2026-05-13_to_2026-05-20.md) | 225 | ROCm / AMD (34) | Attention, CI / Build, Compilation / CUDA Graph, Disaggregation / PD |
 
 ---
-_Last updated: 2026-07-06 12:14 UTC_
+_Last updated: 2026-07-13 11:25 UTC_
