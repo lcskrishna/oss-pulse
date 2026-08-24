@@ -1,0 +1,2 @@
+date,sha,pr,component,new_feature,rocm,message,author,files,url
+2026-08-17,10d15ae2f3,4824,Samples / Demo,,,Fix: Update samples README using the link to the v11.0 data (#4824),EstebanVg15,samples/README.md,https://github.com/NVIDIA/TensorRT/commit/10d15ae2f3

@@ -4,6 +4,7 @@ Weekly commit digests for [`ROCm/aiter`](https://github.com/ROCm/aiter).
 
 | Period | Commits | Top Area | Areas Changed |
 |--------|:-------:|----------|---------------|
+| [2026-08-17 → 2026-08-24](./ROCm_aiter_2026-08-17_to_2026-08-24.md) | 79 | MoE (28) | CI / Build, CK / CK_TILE, GEMM, MHA / Attention |
 | [2026-08-10 → 2026-08-17](./ROCm_aiter_2026-08-10_to_2026-08-17.md) | 93 | MoE (27) | CI / Build, CK / CK_TILE, Docs, GEMM |
 | [2026-08-03 → 2026-08-10](./ROCm_aiter_2026-08-03_to_2026-08-10.md) | 69 | MoE (18) | CI / Build, GEMM, MHA / Attention, MLA |
 | [2026-07-27 → 2026-08-03](./ROCm_aiter_2026-07-27_to_2026-08-03.md) | 50 | MoE (20) | CI / Build, Docs, GEMM, MLA |
@@ -15,7 +16,6 @@ Weekly commit digests for [`ROCm/aiter`](https://github.com/ROCm/aiter).
 | [2026-06-15 → 2026-06-22](./ROCm_aiter_2026-06-15_to_2026-06-22.md) | 65 | MoE (11) | CI / Build, Docs, GEMM, MHA / Attention |
 | [2026-06-08 → 2026-06-15](./ROCm_aiter_2026-06-08_to_2026-06-15.md) | 77 | GEMM (17) | CI / Build, GEMM, MHA / Attention, MLA |
 | [2026-06-01 → 2026-06-08](./ROCm_aiter_2026-06-01_to_2026-06-08.md) | 79 | MoE (19) | CI / Build, GEMM, MHA / Attention, MLA |
-| [2026-05-25 → 2026-06-01](./ROCm_aiter_2026-05-25_to_2026-06-01.md) | 77 | MoE (22) | CI / Build, CK / CK_TILE, GEMM, MHA / Attention |
 
 ---
-_Last updated: 2026-08-17 08:50 UTC_
+_Last updated: 2026-08-24 08:54 UTC_
