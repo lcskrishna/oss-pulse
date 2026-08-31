@@ -4,6 +4,7 @@ Weekly commit digests for [`NVIDIA/TensorRT`](https://github.com/NVIDIA/TensorRT
 
 | Period | Commits | Top Area | Areas Changed |
 |--------|:-------:|----------|---------------|
+| [2026-08-24 → 2026-08-31](./NVIDIA_TensorRT_2026-08-24_to_2026-08-31.md) | 2 | Release / Docs (2) | Release / Docs |
 | [2026-08-17 → 2026-08-24](./NVIDIA_TensorRT_2026-08-17_to_2026-08-24.md) | 1 | Samples / Demo (1) | Samples / Demo |
 | [2026-08-10 → 2026-08-17](./NVIDIA_TensorRT_2026-08-10_to_2026-08-17.md) | 0 | — (0) |  |
 | [2026-08-03 → 2026-08-10](./NVIDIA_TensorRT_2026-08-03_to_2026-08-10.md) | 1 | Release / Docs (1) | Release / Docs |
@@ -15,7 +16,6 @@ Weekly commit digests for [`NVIDIA/TensorRT`](https://github.com/NVIDIA/TensorRT
 | [2026-06-22 → 2026-06-29](./NVIDIA_TensorRT_2026-06-22_to_2026-06-29.md) | 1 | Release / Docs (1) | Release / Docs |
 | [2026-06-15 → 2026-06-22](./NVIDIA_TensorRT_2026-06-15_to_2026-06-22.md) | 0 | — (0) |  |
 | [2026-06-08 → 2026-06-15](./NVIDIA_TensorRT_2026-06-08_to_2026-06-15.md) | 0 | — (0) |  |
-| [2026-06-01 → 2026-06-08](./NVIDIA_TensorRT_2026-06-01_to_2026-06-08.md) | 2 | Samples / Demo (1) | Release / Docs, Samples / Demo |
 
 ---
-_Last updated: 2026-08-24 09:01 UTC_
+_Last updated: 2026-08-31 16:10 UTC_
