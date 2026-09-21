@@ -4,6 +4,7 @@ Weekly commit digests for [`ROCm/mori`](https://github.com/ROCm/mori).
 
 | Period | Commits | Top Area | Areas Changed |
 |--------|:-------:|----------|---------------|
+| [2026-09-14 → 2026-09-21](./ROCm_mori_2026-09-14_to_2026-09-21.md) | 23 | MORI-EP (Expert Parallel) (12) | CI / Build, Env / Config, MORI-CCL (Collectives), MORI-EP (Expert Parallel) |
 | [2026-09-07 → 2026-09-14](./ROCm_mori_2026-09-07_to_2026-09-14.md) | 21 | MORI-EP (Expert Parallel) (10) | Benchmarks / Tests, Bootstrap / Topology, CI / Build, Env / Config |
 | [2026-08-31 → 2026-09-07](./ROCm_mori_2026-08-31_to_2026-09-07.md) | 12 | MORI-EP (Expert Parallel) (5) | Env / Config, MORI-CCL (Collectives), MORI-EP (Expert Parallel), MORI-UMBP (Memory Pool) |
 | [2026-08-24 → 2026-08-31](./ROCm_mori_2026-08-24_to_2026-08-31.md) | 19 | MORI-EP (Expert Parallel) (8) | Bootstrap / Topology, CI / Build, Env / Config, MORI-CCL (Collectives) |
@@ -15,7 +16,6 @@ Weekly commit digests for [`ROCm/mori`](https://github.com/ROCm/mori).
 | [2026-07-13 → 2026-07-20](./ROCm_mori_2026-07-13_to_2026-07-20.md) | 23 | MORI-EP (Expert Parallel) (9) | CI / Build, Env / Config, JIT / IR / FlyDSL, MORI-EP (Expert Parallel) |
 | [2026-07-06 → 2026-07-13](./ROCm_mori_2026-07-06_to_2026-07-13.md) | 10 | MORI-EP (Expert Parallel) (2) | CI / Build, MORI-CCL (Collectives), MORI-EP (Expert Parallel), MORI-IO (KVCache / P2P) |
 | [2026-06-29 → 2026-07-06](./ROCm_mori_2026-06-29_to_2026-07-06.md) | 14 | MORI-IO (KVCache / P2P) (4) | CI / Build, MORI-CCL (Collectives), MORI-EP (Expert Parallel), MORI-IO (KVCache / P2P) |
-| [2026-06-22 → 2026-06-29](./ROCm_mori_2026-06-22_to_2026-06-29.md) | 12 | MORI-IO (KVCache / P2P) (5) | Bootstrap / Topology, CI / Build, Docs, MORI-EP (Expert Parallel) |
 
 ---
-_Last updated: 2026-09-14 14:55 UTC_
+_Last updated: 2026-09-21 15:00 UTC_
