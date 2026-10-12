@@ -1,0 +1,2 @@
+date,sha,pr,component,new_feature,rocm,message,author,files,url
+2026-10-09,16ed0636df,4872,Release / Docs,,,TensorRT 11.4 OSS Release (#4872),Kevin Chen,,https://github.com/NVIDIA/TensorRT/commit/16ed0636df
