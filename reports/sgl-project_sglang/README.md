@@ -4,6 +4,7 @@ Weekly commit digests for [`sgl-project/sglang`](https://github.com/sgl-project/
 
 | Period | Commits | Top Area | Areas Changed |
 |--------|:-------:|----------|---------------|
+| [2026-10-12 → 2026-10-19](./sgl-project_sglang_2026-10-12_to_2026-10-19.md) | 516 | Attention / FlashInfer (132) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
 | [2026-10-05 → 2026-10-12](./sgl-project_sglang_2026-10-05_to_2026-10-12.md) | 537 | Attention / FlashInfer (125) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
 | [2026-09-28 → 2026-10-05](./sgl-project_sglang_2026-09-28_to_2026-10-05.md) | 430 | Attention / FlashInfer (94) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
 | [2026-09-21 → 2026-09-28](./sgl-project_sglang_2026-09-21_to_2026-09-28.md) | 459 | Attention / FlashInfer (105) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
@@ -15,7 +16,6 @@ Weekly commit digests for [`sgl-project/sglang`](https://github.com/sgl-project/
 | [2026-08-10 → 2026-08-17](./sgl-project_sglang_2026-08-10_to_2026-08-17.md) | 394 | Multimodal (81) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
 | [2026-08-03 → 2026-08-10](./sgl-project_sglang_2026-08-03_to_2026-08-10.md) | 399 | Attention / FlashInfer (103) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
 | [2026-07-27 → 2026-08-03](./sgl-project_sglang_2026-07-27_to_2026-08-03.md) | 297 | Attention / FlashInfer (62) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
-| [2026-07-20 → 2026-07-27](./sgl-project_sglang_2026-07-20_to_2026-07-27.md) | 277 | Attention / FlashInfer (45) | Attention / FlashInfer, CI / Build, Docs / Examples, KV Cache / Memory |
 
 ---
-_Last updated: 2026-10-12 17:43 UTC_
+_Last updated: 2026-10-19 15:31 UTC_
