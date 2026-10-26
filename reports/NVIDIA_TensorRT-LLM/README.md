@@ -4,6 +4,7 @@ Weekly commit digests for [`NVIDIA/TensorRT-LLM`](https://github.com/NVIDIA/Tens
 
 | Period | Commits | Top Area | Areas Changed |
 |--------|:-------:|----------|---------------|
+| [2026-10-19 → 2026-10-26](./NVIDIA_TensorRT-LLM_2026-10-19_to_2026-10-26.md) | 221 | CI / Infra (50) | Attention, CI / Infra, Compilation / Graph, Disaggregation / KV |
 | [2026-10-12 → 2026-10-19](./NVIDIA_TensorRT-LLM_2026-10-12_to_2026-10-19.md) | 210 | CI / Infra (55) | Attention, CI / Infra, Disaggregation / KV, Docs / Examples |
 | [2026-10-05 → 2026-10-12](./NVIDIA_TensorRT-LLM_2026-10-05_to_2026-10-12.md) | 138 | CI / Infra (25) | Attention, CI / Infra, Disaggregation / KV, Executor / Runtime |
 | [2026-09-28 → 2026-10-05](./NVIDIA_TensorRT-LLM_2026-09-28_to_2026-10-05.md) | 114 | CI / Infra (33) | Attention, CI / Infra, Disaggregation / KV, Docs / Examples |
@@ -15,7 +16,6 @@ Weekly commit digests for [`NVIDIA/TensorRT-LLM`](https://github.com/NVIDIA/Tens
 | [2026-08-17 → 2026-08-24](./NVIDIA_TensorRT-LLM_2026-08-17_to_2026-08-24.md) | 232 | CI / Infra (68) | Attention, AutoDeploy, CI / Infra, Compilation / Graph |
 | [2026-08-10 → 2026-08-17](./NVIDIA_TensorRT-LLM_2026-08-10_to_2026-08-17.md) | 226 | CI / Infra (72) | Attention, AutoDeploy, CI / Infra, Disaggregation / KV |
 | [2026-08-03 → 2026-08-10](./NVIDIA_TensorRT-LLM_2026-08-03_to_2026-08-10.md) | 197 | CI / Infra (65) | Attention, AutoDeploy, CI / Infra, Compilation / Graph |
-| [2026-07-27 → 2026-08-03](./NVIDIA_TensorRT-LLM_2026-07-27_to_2026-08-03.md) | 192 | CI / Infra (50) | Attention, CI / Infra, Disaggregation / KV, Docs / Examples |
 
 ---
-_Last updated: 2026-10-19 15:39 UTC_
+_Last updated: 2026-10-26 15:18 UTC_
