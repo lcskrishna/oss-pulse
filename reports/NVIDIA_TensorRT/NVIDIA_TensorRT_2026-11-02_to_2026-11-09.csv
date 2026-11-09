@@ -1,0 +1,2 @@
+date,sha,pr,component,new_feature,rocm,message,author,files,url
+2026-10-22,72fc1a3d23,,Release / Docs,,,#4889 - Fix Polygraphy JSON decoding of arrays under type-name keys,mottopanikeiku,tools/Polygraphy/CHANGELOG.md; tools/Polygraphy/polygraphy/json/serde.py; tools/Polygraphy/tests/util/test_serde.py,https://github.com/NVIDIA/TensorRT/commit/72fc1a3d23
